@@ -13,7 +13,7 @@
 #include "stm_bme_280.h"
 
 #define MAX_NUMBER_OF_SENSORS 7
-#define SENSORS_TIMEOUT 15 //sekund
+#define SENSORS_TIMEOUT 5 //sekund
 
 /*typedef enum {
 	Unidentified_type	 = 0,

@@ -49,25 +49,33 @@ void BME280_Handler()
 												BME280_PRES_OVERSAMPLING_X8,
 												BME280_HUM_OVERSAMPLING_X8,
 												BME280_MODE_NORMAL, 100);
+
+		if(BME280[activeSensor].typeOfSensor != Unidentified_type)
+			BME280[activeSensor].timeout = SENSORS_TIMEOUT;
+
 	}
 	else if(BME280[activeSensor].typeOfSensor == BME_280_type)
 	{
 		BME280[activeSensor].temp = BME280_ReadTemperature(activeSensor);
 		BME280[activeSensor].pres = BME280_ReadPressure(activeSensor);
 		BME280[activeSensor].humi = BME280_ReadHumidity(activeSensor);
-		BME280[activeSensor].timeout = SENSORS_TIMEOUT;
+
+		if(BME280[activeSensor].temp > -50.0)	//jesli wartosc mniejsza niz czujnik przesta³ odpowiadac, wartosc ponizej 50 stopni wynika ze wspolczynnikow korekcyjnych
+			BME280[activeSensor].timeout = SENSORS_TIMEOUT;
 	}
 	else if(BME280[activeSensor].typeOfSensor == BMP_280_type)
 	{
 		BME280[activeSensor].temp = BME280_ReadTemperature(activeSensor);
 		BME280[activeSensor].pres = BME280_ReadPressure(activeSensor);
-		BME280[activeSensor].timeout = SENSORS_TIMEOUT;
+
+		if(BME280[activeSensor].temp > -50.0)	//jesli wartosc mniejsza niz czujnik przesta³ odpowiadac, wartosc ponizej 50 stopni wynika ze wspolczynnikow korekcyjnych
+			BME280[activeSensor].timeout = SENSORS_TIMEOUT;
 	}
 
 	IncrementActiveSensorBME280();
 
 	//timeout handle
-/*	if((HAL_GetTick() - startTickTrace) >= 1000)
+	if((HAL_GetTick() - startTickTrace) >= 1000)
 	{
 		startTickTrace = HAL_GetTick();
 		for(int i = 0; i < MAX_NUMBER_OF_SENSORS ; i++)
@@ -76,7 +84,7 @@ void BME280_Handler()
 			if(BME280[i].timeout == 0) BME280[i].typeOfSensor = Unidentified_type;
 
 		}
-	}*/
+	}
 
 
 }
