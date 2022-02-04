@@ -1,4 +1,4 @@
 nextionDisplay.c:42:6:nextionTrace	120	static
 nextionDisplay.c:110:6:nextionDisplayHandler	40	static
-nextionDisplay.c:283:6:StartNextionDisplayTask	16	static
-nextionDisplay.c:298:6:HAL_UART_RxCpltCallback	16	static
+nextionDisplay.c:284:6:StartNextionDisplayTask	16	static
+nextionDisplay.c:299:6:HAL_UART_RxCpltCallback	16	static

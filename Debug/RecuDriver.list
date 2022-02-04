@@ -18000,12 +18000,12 @@ void nextionDisplayHandler()
  8006ef8:	781b      	ldrb	r3, [r3, #0]
  8006efa:	2b01      	cmp	r3, #1
  8006efc:	d000      	beq.n	8006f00 <nextionDisplayHandler+0x19c>
+				//dupa sama
 
 			}
 
 			break;
 		default:
-			break;
  8006efe:	e11d      	b.n	800713c <nextionDisplayHandler+0x3d8>
 			if((HAL_GetTick() - startTickTrace) >= 1000)
  8006f00:	f7fa f88c 	bl	800101c <HAL_GetTick>
@@ -18257,12 +18257,12 @@ void nextionDisplayHandler()
  8007132:	68fb      	ldr	r3, [r7, #12]
  8007134:	2b06      	cmp	r3, #6
  8007136:	f77f aef8 	ble.w	8006f2a <nextionDisplayHandler+0x1c6>
-			break;
+
  800713a:	bf00      	nop
+			break;
 	}
 
 
-}
  800713c:	bf00      	nop
  800713e:	371c      	adds	r7, #28
  8007140:	46bd      	mov	sp, r7
@@ -18273,78 +18273,78 @@ void nextionDisplayHandler()
  8007150:	0800d790 	.word	0x0800d790
 
 08007154 <StartNextionDisplayTask>:
+}
 
 /*
  *
  */
 void StartNextionDisplayTask(void const * argument)
-{
  8007154:	b580      	push	{r7, lr}
  8007156:	b082      	sub	sp, #8
  8007158:	af00      	add	r7, sp, #0
  800715a:	6078      	str	r0, [r7, #4]
-	HAL_UART_Receive_IT(&huart1, &RxDataUsart1, 1);
+{
  800715c:	2201      	movs	r2, #1
  800715e:	4905      	ldr	r1, [pc, #20]	; (8007174 <StartNextionDisplayTask+0x20>)
  8007160:	4805      	ldr	r0, [pc, #20]	; (8007178 <StartNextionDisplayTask+0x24>)
  8007162:	f7fd f847 	bl	80041f4 <HAL_UART_Receive_IT>
+	HAL_UART_Receive_IT(&huart1, &RxDataUsart1, 1);
 
 	while(1)
 	{
-		nextionDisplayHandler();	//funkcja blokujaca, dlatego poznienie tylko 1ms
  8007166:	f7ff fdfd 	bl	8006d64 <nextionDisplayHandler>
-		osDelay(50);
+		nextionDisplayHandler();	//funkcja blokujaca, dlatego poznienie tylko 1ms
  800716a:	2032      	movs	r0, #50	; 0x32
  800716c:	f7fd ff7d 	bl	800506a <osDelay>
-		nextionDisplayHandler();	//funkcja blokujaca, dlatego poznienie tylko 1ms
+	{
  8007170:	e7f9      	b.n	8007166 <StartNextionDisplayTask+0x12>
  8007172:	bf00      	nop
  8007174:	20000ee0 	.word	0x20000ee0
  8007178:	20000e28 	.word	0x20000e28
 
 0800717c <HAL_UART_RxCpltCallback>:
+}
 
 /*
  *
  */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
-{
  800717c:	b580      	push	{r7, lr}
  800717e:	b082      	sub	sp, #8
  8007180:	af00      	add	r7, sp, #0
  8007182:	6078      	str	r0, [r7, #4]
+	//static uint8_t rxBuf[NEXTION_RX_BUF_SIZE] = {0};
 	//static int16_t i = 0;
 	//static uint32_t Tickstart = 0;
 
 
 	//LedSet(LED3, off);
-	if(huart->Instance == huart1.Instance)
  8007184:	687b      	ldr	r3, [r7, #4]
  8007186:	681a      	ldr	r2, [r3, #0]
  8007188:	4b09      	ldr	r3, [pc, #36]	; (80071b0 <HAL_UART_RxCpltCallback+0x34>)
  800718a:	681b      	ldr	r3, [r3, #0]
  800718c:	429a      	cmp	r2, r3
  800718e:	d10a      	bne.n	80071a6 <HAL_UART_RxCpltCallback+0x2a>
+	if(huart->Instance == huart1.Instance)
 	{
-		CircularBuffer_pushBackByte(&rxBufferObject, RxDataUsart1);
  8007190:	4b08      	ldr	r3, [pc, #32]	; (80071b4 <HAL_UART_RxCpltCallback+0x38>)
  8007192:	781b      	ldrb	r3, [r3, #0]
  8007194:	4619      	mov	r1, r3
  8007196:	4808      	ldr	r0, [pc, #32]	; (80071b8 <HAL_UART_RxCpltCallback+0x3c>)
  8007198:	f7ff f87e 	bl	8006298 <CircularBuffer_pushBackByte>
+		}
 		else
 		{
 			i++;	//ikrementue wskaznik na buforze
 		}*/
 
-		HAL_UART_Receive_IT(&huart1, &RxDataUsart1, 1);
  800719c:	2201      	movs	r2, #1
  800719e:	4905      	ldr	r1, [pc, #20]	; (80071b4 <HAL_UART_RxCpltCallback+0x38>)
  80071a0:	4803      	ldr	r0, [pc, #12]	; (80071b0 <HAL_UART_RxCpltCallback+0x34>)
  80071a2:	f7fd f827 	bl	80041f4 <HAL_UART_Receive_IT>
+		HAL_UART_Receive_IT(&huart1, &RxDataUsart1, 1);
 	}
 
-}
  80071a6:	bf00      	nop
  80071a8:	3708      	adds	r7, #8
  80071aa:	46bd      	mov	sp, r7
