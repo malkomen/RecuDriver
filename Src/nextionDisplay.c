@@ -266,6 +266,7 @@ void nextionDisplayHandler()
 				}
 				//nextionTrace("page 2");
 				//dupa i kamieni kupa
+				//dupa sama
 
 			}
 
