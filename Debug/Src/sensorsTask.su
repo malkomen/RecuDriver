@@ -1,0 +1,8 @@
+sensorsTask.c:24:6:StartSensorsTask	16	static
+sensorsTask.c:37:6:BME280_Handler	40	static
+sensorsTask.c:114:6:BME280_SetSpiMode	8	static
+sensorsTask.c:134:11:GetBME280Sensors	4	static
+sensorsTask.c:139:6:BME280_SetStatus	16	static
+sensorsTask.c:147:9:GetActiveSensorBME280	4	static
+sensorsTask.c:152:6:SetActiveSensorBME280	16	static
+sensorsTask.c:157:6:IncrementActiveSensorBME280	16	static
