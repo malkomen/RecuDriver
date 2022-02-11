@@ -3598,16 +3598,16 @@ LOAD c:/program files (x86)/atollic/truestudio for stm32 9.3.0/armtools/bin/../l
                 0x20000830      0x200 Src\freertos.o
  .bss.NextionDisplay_uartRxBuf
                 0x20000a30       0x80 Src\nextionDisplay.o
- .bss.ms.11985  0x20000ab0        0x1 Src\nextionDisplay.o
+ .bss.ms.12010  0x20000ab0        0x1 Src\nextionDisplay.o
  *fill*         0x20000ab1        0x3 
- .bss.startTickTrace.11993
+ .bss.startTickTrace.12018
                 0x20000ab4        0x4 Src\nextionDisplay.o
- .bss.index.11988
+ .bss.index.12013
                 0x20000ab8        0x1 Src\nextionDisplay.o
  *fill*         0x20000ab9        0x3 
- .bss.parsingBuf.11987
+ .bss.parsingBuf.12012
                 0x20000abc       0x20 Src\nextionDisplay.o
- .bss.nextionCyclicalTrace.11992
+ .bss.nextionCyclicalTrace.12017
                 0x20000adc        0x1 Src\nextionDisplay.o
  .bss.activeSensorBME280
                 0x20000add        0x1 Src\sensorsTask.o
@@ -3615,7 +3615,7 @@ LOAD c:/program files (x86)/atollic/truestudio for stm32 9.3.0/armtools/bin/../l
  *fill*         0x20000ade        0x2 
  .bss.BME280    0x20000ae0       0x8c Src\sensorsTask.o
                 0x20000ae0                BME280
- .bss.startTickTrace.10759
+ .bss.startTickTrace.10784
                 0x20000b6c        0x4 Src\sensorsTask.o
  .bss.tFineValue
                 0x20000b70       0x1c Src\stm_bme_280.o
