@@ -195,7 +195,7 @@ void nextionDisplayHandler()
 					else if(stricmp("fan", (const char *)(&parsingBuf[1])) == 0)
 					{
 						value = ptr[1];
-						TIM2->CCR3 = value * 10;
+						TIM2->CCR2 = value * 10;
 					}
 					else if(stricmp("OdczytCzujnikow", (const char *)&parsingBuf[1]) == 0)
 					{
