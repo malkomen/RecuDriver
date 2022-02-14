@@ -35,6 +35,7 @@ extern "C" {
 #include "cmsis_os.h"
 //#include "sensorsTask.h"
 #include "nextionDisplay.h"
+#include "automationTask.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

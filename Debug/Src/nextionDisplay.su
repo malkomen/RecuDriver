@@ -1,4 +1,12 @@
 nextionDisplay.c:42:6:nextionTrace	120	static
-nextionDisplay.c:110:6:nextionDisplayHandler	40	static
-nextionDisplay.c:284:6:StartNextionDisplayTask	16	static
-nextionDisplay.c:299:6:HAL_UART_RxCpltCallback	16	static
+nextionDisplay.c:110:6:odczytHarmonogramWdomu	24	static
+nextionDisplay.c:121:6:odczytHarmonogramWbiurze	24	static
+nextionDisplay.c:132:6:odczytHarmonogramTydzWpracy	24	static
+nextionDisplay.c:143:6:odczytHarmonogramUzytkownika	24	static
+nextionDisplay.c:154:6:wyslanieHarmonogramWdomu	40	static
+nextionDisplay.c:191:6:wyslanieHarmonogramWbiurze	40	static
+nextionDisplay.c:228:6:wyslanieHarmonogramTydzWpracy	40	static
+nextionDisplay.c:265:6:wyslanieHarmonogramUzytkownika	40	static
+nextionDisplay.c:305:6:nextionDisplayHandler	40	static
+nextionDisplay.c:513:6:StartNextionDisplayTask	16	static
+nextionDisplay.c:528:6:HAL_UART_RxCpltCallback	16	static

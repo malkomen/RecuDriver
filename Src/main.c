@@ -45,6 +45,8 @@ ADC_HandleTypeDef hadc1;
 
 CAN_HandleTypeDef hcan1;
 
+CRC_HandleTypeDef hcrc;
+
 I2C_HandleTypeDef hi2c1;
 
 SPI_HandleTypeDef hspi2;
@@ -62,6 +64,7 @@ osThreadId defaultTaskHandle;
 /* USER CODE BEGIN PV */
 osThreadId sensorsTaskHandle;
 osThreadId nextionDisplayTaskHandle;
+osThreadId automationTaskHandle;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -78,6 +81,7 @@ static void MX_SPI2_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_TIM8_Init(void);
 static void MX_USART3_UART_Init(void);
+static void MX_CRC_Init(void);
 void StartDefaultTask(void const * argument);
 
 /* USER CODE BEGIN PFP */
@@ -128,6 +132,7 @@ int main(void)
   MX_ADC1_Init();
   MX_TIM8_Init();
   MX_USART3_UART_Init();
+  MX_CRC_Init();
   /* USER CODE BEGIN 2 */
 
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);	//FAN2
@@ -164,6 +169,9 @@ int main(void)
 
   osThreadDef(nextionDisplayTask, StartNextionDisplayTask, osPriorityNormal, 0,256);
   nextionDisplayTaskHandle = osThreadCreate(osThread(nextionDisplayTask), NULL);
+
+  osThreadDef(automationTask, StartAutomationTask, osPriorityNormal, 0,128);
+  automationTaskHandle = osThreadCreate(osThread(automationTask), NULL);
 
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -311,6 +319,32 @@ static void MX_CAN1_Init(void)
   /* USER CODE BEGIN CAN1_Init 2 */
 
   /* USER CODE END CAN1_Init 2 */
+
+}
+
+/**
+  * @brief CRC Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_CRC_Init(void)
+{
+
+  /* USER CODE BEGIN CRC_Init 0 */
+
+  /* USER CODE END CRC_Init 0 */
+
+  /* USER CODE BEGIN CRC_Init 1 */
+
+  /* USER CODE END CRC_Init 1 */
+  hcrc.Instance = CRC;
+  if (HAL_CRC_Init(&hcrc) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN CRC_Init 2 */
+
+  /* USER CODE END CRC_Init 2 */
 
 }
 

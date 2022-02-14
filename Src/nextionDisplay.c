@@ -107,6 +107,201 @@ void nextionTrace(const char* format, ...)
 /*
  *
  */
+void odczytHarmonogramWdomu(char* buf)
+{
+	timeTablePlanner_t* tTP = GetTimeTablePlanner();
+	memcpy(&(tTP->plan[planner_wDomu]), buf, 24*7);
+
+	SaveSetting();
+}
+
+/*
+ *
+ */
+void odczytHarmonogramWbiurze(char* buf)
+{
+	timeTablePlanner_t* tTP = GetTimeTablePlanner();
+	memcpy(&(tTP->plan[planner_wBiurze]), buf, 24*7);
+
+	SaveSetting();
+}
+
+/*
+ *
+ */
+void odczytHarmonogramTydzWpracy(char* buf)
+{
+	timeTablePlanner_t* tTP = GetTimeTablePlanner();
+	memcpy(&(tTP->plan[planner_tydzienWPracy]), buf, 24*7);
+
+	SaveSetting();
+}
+
+/*
+ *
+ */
+void odczytHarmonogramUzytkownika(char* buf)
+{
+	timeTablePlanner_t* tTP = GetTimeTablePlanner();
+	memcpy(&(tTP->plan[planner_uzytkownia]), buf, 24*7);
+
+	SaveSetting();
+}
+
+/*
+ *
+ */
+void wyslanieHarmonogramWdomu()
+{
+	timeTablePlanner_t* tTP = GetTimeTablePlanner();
+
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+2), tTP->plan[planner_wDomu].pon[i] + 3);	// + 3 id = 3 to indeks pierwsze obrazka odpowiadajacego za kolor szary
+	}
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+28), tTP->plan[planner_wDomu].wt[i] + 3);
+	}
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+53), tTP->plan[planner_wDomu].sr[i] + 3);
+	}
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+78), tTP->plan[planner_wDomu].czw[i] + 3);
+	}
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+103), tTP->plan[planner_wDomu].pt[i] + 3);
+	}
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+128), tTP->plan[planner_wDomu].sob[i] + 3);
+	}
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+153), tTP->plan[planner_wDomu].niedz[i] + 3);
+	}
+}
+
+/*
+ *
+ */
+void wyslanieHarmonogramWbiurze()
+{
+	timeTablePlanner_t* tTP = GetTimeTablePlanner();
+
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+2), tTP->plan[planner_wBiurze].pon[i] + 3);	// + 3 id = 3 to indeks pierwsze obrazka odpowiadajacego za kolor szary
+	}
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+28), tTP->plan[planner_wBiurze].wt[i] + 3);
+	}
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+53), tTP->plan[planner_wBiurze].sr[i] + 3);
+	}
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+78), tTP->plan[planner_wBiurze].czw[i] + 3);
+	}
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+103), tTP->plan[planner_wBiurze].pt[i] + 3);
+	}
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+128), tTP->plan[planner_wBiurze].sob[i] + 3);
+	}
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+153), tTP->plan[planner_wBiurze].niedz[i] + 3);
+	}
+}
+
+/*
+ *
+ */
+void wyslanieHarmonogramTydzWpracy()
+{
+	timeTablePlanner_t* tTP = GetTimeTablePlanner();
+
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+2), tTP->plan[planner_tydzienWPracy].pon[i] + 3);	// + 3 id = 3 to indeks pierwsze obrazka odpowiadajacego za kolor szary
+	}
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+28), tTP->plan[planner_tydzienWPracy].wt[i] + 3);
+	}
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+53), tTP->plan[planner_tydzienWPracy].sr[i] + 3);
+	}
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+78), tTP->plan[planner_tydzienWPracy].czw[i] + 3);
+	}
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+103), tTP->plan[planner_tydzienWPracy].pt[i] + 3);
+	}
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+128), tTP->plan[planner_tydzienWPracy].sob[i] + 3);
+	}
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+153), tTP->plan[planner_tydzienWPracy].niedz[i] + 3);
+	}
+}
+
+/*
+ *
+ */
+void wyslanieHarmonogramUzytkownika()
+{
+	timeTablePlanner_t* tTP = GetTimeTablePlanner();
+
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+2), tTP->plan[planner_uzytkownia].pon[i] + 3);	// + 3 id = 3 to indeks pierwsze obrazka odpowiadajacego za kolor szary
+	}
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+28), tTP->plan[planner_uzytkownia].wt[i] + 3);
+	}
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+53), tTP->plan[planner_uzytkownia].sr[i] + 3);
+	}
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+78), tTP->plan[planner_uzytkownia].czw[i] + 3);
+	}
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+103), tTP->plan[planner_uzytkownia].pt[i] + 3);
+	}
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+128), tTP->plan[planner_uzytkownia].sob[i] + 3);
+	}
+	for (int i = 0; i<24; i++)
+	{
+		nextionTrace("p%d.pic=%d", (i+153), tTP->plan[planner_uzytkownia].niedz[i] + 3);
+	}
+}
+
+
+
+
+/*
+ *
+ */
 void nextionDisplayHandler()
 {
 	static uint8_t ms=0;
@@ -201,6 +396,38 @@ void nextionDisplayHandler()
 					{
 						nextionCyclicalTrace = odczytCzujnikow;
 					}
+					else if(stricmp("Harm. w domu", (const char *)&parsingBuf[1]) == 0)
+					{
+						odczytHarmonogramWdomu(&ptr[1]);
+					}
+					else if(stricmp("Akt. Harm. w domu", (const char *)&parsingBuf[1]) == 0)
+					{
+						wyslanieHarmonogramWdomu();
+					}
+					else if(stricmp("Harm. w biurze", (const char *)&parsingBuf[1]) == 0)
+					{
+						odczytHarmonogramWbiurze(&ptr[1]);
+					}
+					else if(stricmp("Akt. Harm. w biurze", (const char *)&parsingBuf[1]) == 0)
+					{
+						wyslanieHarmonogramWbiurze();
+					}
+					else if(stricmp("Harm. tydz. w pracy", (const char *)&parsingBuf[1]) == 0)
+					{
+						odczytHarmonogramTydzWpracy(&ptr[1]);
+					}
+					else if(stricmp("Akt. Harm. tydz. w pracy", (const char *)&parsingBuf[1]) == 0)
+					{
+						wyslanieHarmonogramTydzWpracy();
+					}
+					else if(stricmp("Harm. uzytkownika", (const char *)&parsingBuf[1]) == 0)
+					{
+						odczytHarmonogramUzytkownika(&ptr[1]);
+					}
+					else if(stricmp("Akt. Harm. uzytkownika", (const char *)&parsingBuf[1]) == 0)
+					{
+						wyslanieHarmonogramUzytkownika();
+					}
 
 					else
 					{
@@ -277,6 +504,8 @@ void nextionDisplayHandler()
 
 
 }
+
+//timeTablePlanner_t* GetTimeTablePlanner();
 
 /*
  *

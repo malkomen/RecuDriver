@@ -1,0 +1,5 @@
+automationTask.c:25:21:GetTimeTablePlanner	4	static
+automationTask.c:31:19:FlashWrite	40	static
+automationTask.c:69:19:SaveSetting	16	static
+automationTask.c:96:6:readSetting	24	static
+automationTask.c:130:6:StartAutomationTask	16	static
